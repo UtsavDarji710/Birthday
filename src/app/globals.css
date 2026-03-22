@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+@keyframes float-complex {
+  0% {
+    transform: translateY(0vh) translateX(0) scale(1) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50vh) translateX(50px) scale(1.2) rotate(180deg);
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(-50px) scale(0.8) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-complex {
+  animation: float-complex linear infinite;
+}
+
+@keyframes explode {
+  0% { 
+    transform: translate(0, 0) rotate(0deg) scale(1); 
+    opacity: 1; 
+  }
+  40% { 
+    transform: translate(calc(var(--tx) * 0.7), -80vh) rotate(180deg) scale(1.2); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translate(var(--tx), 10vh) rotate(720deg) scale(0.5); 
+    opacity: 0; 
+  }
+}
+
+.animate-explode {
+  animation: explode var(--dur) ease-out forwards;
+}
+
+body {
+  background-color: #fafafa;
+  color: #333;
+  /* Prevent 'pull to refresh' and overscrolling on mobile */
+  overscroll-behavior-y: none;
+}
+
+.font-sans {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-handwriting {
+  font-family: var(--font-caveat), cursive;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-up {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
